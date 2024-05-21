@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- Include the ECharts file you just downloaded -->
+    <script src="echarts.js"></script>
+  </head>
+  <body>
+    <!-- Prepare a DOM with a defined width and height for ECharts -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+      // Initialize the echarts instance based on the prepared dom
+      var myChart = echarts.init(document.getElementById('main'));
+
+      // Specify the configuration items and data for the chart
+      var option = {
+        color: ['#80FFA5', '#37A2FF', '#FF0087'],
+        title: {
+            text: 'Kenya'
+          },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+            label: {
+              backgroundColor: '#6a7985'
+            }
+          }
+        },
+        legend: {
+          data: ['Renewable', 'BAT', 'GRID']
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',
+            boundaryGap: false,
+            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            name: 'Month',  // Title for the X-axis
+            nameLocation: 'middle',  // Position the title in the middle
+            nameGap: 20,  // Gap between the title and the axis
+            nameTextStyle: {
+              fontSize: 12  // Font size of the title
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            name: 'Power'  // Title for the Y-axis
+          }
+        ],
+        series: [
+          {
+            name: 'Renewable',
+            type: 'line',
+            stack: 'Total',
+            smooth: true,
+            lineStyle: {
+              width: 0
+            },
+            showSymbol: false,
+            areaStyle: {
+              opacity: 0.8,
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: 'rgb(128, 255, 165)'
+                },
+                {
+                  offset: 1,
+                  color: 'rgb(1, 191, 236)'
+                }
+              ])
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: [11424.12, 11117.59, 11624.45, 10229.74, 9702.31, 9751.21, 9205.52, 9767.96, 9230.63, 10108.22, 10589.68, 11482.57]
+          },
+          {
+            name: 'BAT',
+            type: 'line',
+            stack: 'Total',
+            smooth: true,
+            lineStyle: {
+              width: 0
+            },
+            showSymbol: false,
+            areaStyle: {
+              opacity: 0.8,
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: 'rgb(55, 162, 255)'
+                },
+                {
+                  offset: 1,
+                  color: 'rgb(116, 21, 219)'
+                }
+              ])
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: [2742.28, 3048.81, 2541.95, 3936.66, 4100.86, 4396.58, 4405.64, 4316.63, 4654.25, 4058.18, 3576.72, 2683.83]
+          },
+          {
+            name: 'GRID',
+            type: 'line',
+            stack: 'Total',
+            smooth: true,
+            lineStyle: {
+              width: 0
+            },
+            showSymbol: false,
+            areaStyle: {
+              opacity: 0.8,
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: 'rgb(255, 0, 135)'
+                },
+                {
+                  offset: 1,
+                  color: 'rgb(135, 0, 157)'
+                }
+              ])
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: [0.00, 0.00, 0.00, 0.00, 363.23, 18.61, 555.24, 81.81, 281.52, 0.00, 0.00, 0.00]
+          }
+        ]
+      };
+
+      // Display the chart using the configuration items and data just specified.
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>
+
+
